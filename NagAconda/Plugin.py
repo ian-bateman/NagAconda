@@ -74,7 +74,7 @@ class Plugin:
        After `start` is called, all command-line options are read, and anything
        left over is placed into this object for further use. Most Nagios
        parsers use explicit option setting, so you might never use this.
-    
+
     """
 
     def __init__(self, description, version):
@@ -138,7 +138,7 @@ class Plugin:
 
         """
 
-        # Before we really do anything, make sure a warning or critical 
+        # Before we really do anything, make sure a warning or critical
         # threshold were even set.
 
         self.__verbose_print('range was ' + range_type)
@@ -449,11 +449,11 @@ class Plugin:
         # We'll use the opportunity to check the status ranges right when the
         # variable is set so we don't have to loop through all of them later.
 
-        if len(self.__warning) > 0:
+        if self.__warning:
             self.__verbose_print("checking warning")
             self.__check_range('warning', name)
 
-        if len(self.__critical) > 0:
+        if self.__critical:
             self.__verbose_print("checking critical")
             self.__check_range('critical', name)
 
